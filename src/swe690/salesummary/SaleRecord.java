@@ -1,4 +1,4 @@
-package salesummary;
+package swe690.salesummary;
 
 import java.util.Objects;
 
