@@ -1,4 +1,4 @@
-package swe690.salesummary;
+package swe.ds.assignment.file;
 
 import java.util.Objects;
 

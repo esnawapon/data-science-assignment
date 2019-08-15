@@ -1,4 +1,4 @@
-package swe690;
+package swe.ds.assignment.file;
 
 import java.io.RandomAccessFile;
 import java.util.Collection;

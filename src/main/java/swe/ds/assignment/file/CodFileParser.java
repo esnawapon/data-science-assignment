@@ -1,11 +1,9 @@
-package swe690.causesofdeath;
-
-import swe690.AbstractFileParser;
+package swe.ds.assignment.file;
 
 import java.util.Collection;
 
 public class CodFileParser extends AbstractFileParser<CodRecord> {
-    private static final String DATA_FILE_PATH = "/home/es/Sites/es/data-science-assignment/resources/CausesOfDeath_France_2001-2008.csv";
+    private static final String DATA_FILE_PATH = "/home/es/Sites/swe/data-science-assignment/src/main/resources/CausesOfDeath_France_2001-2008.csv";
 
     @Override
     protected String getDataFilePath() {
@@ -25,6 +23,5 @@ public class CodFileParser extends AbstractFileParser<CodRecord> {
 
     public static int countByTime(Collection<CodRecord> collection, int time) {
         return (int) collection.stream().filter(each -> each.getTime().equals(time)).count();
-
     }
 }

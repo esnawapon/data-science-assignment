@@ -1,12 +1,10 @@
-package swe690.salesummary;
-
-import swe690.AbstractFileParser;
+package swe.ds.assignment.file;
 
 import java.io.RandomAccessFile;
 import java.util.Map;
 
 public class SaleFileParser extends AbstractFileParser<SaleRecord> {
-    private static final String DATA_FILE_PATH = "/home/es/Sites/es/data-science-assignment/resources/data.txt";
+    private static final String DATA_FILE_PATH = "/home/es/Sites/swe/data-science-assignment/src/main/resources/data.txt";
     @Override
     protected String getDataFilePath() {
         return DATA_FILE_PATH;
