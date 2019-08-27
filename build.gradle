@@ -16,9 +16,14 @@ configurations {
 
 repositories {
 	mavenCentral()
+	flatDir {
+		dirs 'libs'
+	}
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation name: 'saxon-9.1.0.8'
+	implementation name: 'saxon-xqj-9.1.0.8'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
