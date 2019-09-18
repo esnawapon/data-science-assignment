@@ -46,4 +46,8 @@ public class WekaModel {
             e.printStackTrace();
         }
     }
+
+    public static void processMore() {
+        // no-op
+    }
 }
