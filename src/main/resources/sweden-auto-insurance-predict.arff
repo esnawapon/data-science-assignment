@@ -1,0 +1,8 @@
+@relation sweden-auto-insurance
+@attribute number-of-claims numeric
+@attribute total-payment-in-kronor numeric
+
+@data
+61 21760
+17 14210
+13 3190
