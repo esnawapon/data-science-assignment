@@ -7,6 +7,6 @@ import swe.ds.assignment.weka.WekaModel;
 public class Assignment7 implements Demoable {
     @Override
     public void demo() throws Exception {
-        WekaModel.processMore();
+        WekaModel.processRegression();
     }
 }

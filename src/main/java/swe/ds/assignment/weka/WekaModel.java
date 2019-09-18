@@ -47,7 +47,7 @@ public class WekaModel {
         }
     }
 
-    public static void processMore() {
+    public static void processRegression() {
         // no-op
     }
 }
