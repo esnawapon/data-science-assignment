@@ -3,6 +3,7 @@ package swe.ds.assignment.weka;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.LinearRegression;
+import weka.classifiers.functions.Logistic;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;
 
@@ -10,27 +11,32 @@ import java.io.File;
 import java.io.IOException;
 
 public class WekaModel {
-    private static final String TRAIN_FILE_PATH = "/home/es/Sites/swe/data-science-assignment/src/main/resources/sweden-auto-insurance-training.arff";
-    private static final String TEST_FILE_PATH = "/home/es/Sites/swe/data-science-assignment/src/main/resources/sweden-auto-insurance-testing.arff";
-    private static final String PREDICT_FILE_PATH = "/home/es/Sites/swe/data-science-assignment/src/main/resources/sweden-auto-insurance-predict.arff";
-    public static Instances buildInstance(String filePath) {
+    public static Instances buildInstance(String filePath, int classIndex) {
         Instances dataSet = null;
         ArffLoader loader = new ArffLoader();
         try {
             loader.setFile(new File(filePath));
             dataSet = loader.getDataSet();
-            dataSet.setClassIndex(1);
+            dataSet.setClassIndex(classIndex);
         } catch (IOException e) {
+            System.out.println("Cannot read: " + filePath);
             e.printStackTrace();
         }
         return dataSet;
     }
 
-    public static void processLinearRegression() {
-        Instances trainInstance = buildInstance(TRAIN_FILE_PATH);
-        Instances testInstance = buildInstance(TEST_FILE_PATH);
-        Instances predictInstance = buildInstance(PREDICT_FILE_PATH);
-        Classifier classifier = new LinearRegression();
+    public static void processLinearRegression(String train, String test, String predict, int classIndex) {
+        processByClassifier(new LinearRegression(), train, test, predict, classIndex);
+    }
+
+    public static void processLogistic(String train, String test, String predict, int classIndex) {
+        processByClassifier(new Logistic(), train, test, predict, classIndex);
+    }
+
+    public static void processByClassifier(Classifier classifier, String train, String test, String predict, int classIndex) {
+        Instances trainInstance = buildInstance(train, classIndex);
+        Instances testInstance = buildInstance(test, classIndex);
+        Instances predictInstance = buildInstance(predict, classIndex);
         try {
             classifier.buildClassifier(trainInstance);
             Evaluation evaluation = new Evaluation(trainInstance);
@@ -40,7 +46,7 @@ public class WekaModel {
             System.out.println("Prediction");
             for (int i = 0; i < predictInstance.numInstances(); i++) {
                 Double predictedValue = classifier.classifyInstance(predictInstance.instance(i));
-                System.out.println("predicted value of " + predictInstance.instance(i).value(0) + "     \t= " + predictedValue);
+                System.out.println("predicted value of " + predictInstance.instance(i) + "      \t= " + predictedValue);
             }
         } catch (Exception e) {
             e.printStackTrace();

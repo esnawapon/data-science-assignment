@@ -17,6 +17,7 @@ public class Application implements CommandLineRunner {
 	@Autowired Assignment4 assignment4;
 	@Autowired Assignment5 assignment5;
 	@Autowired Assignment6 assignment6;
+    @Autowired Assignment7 assignment7;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -37,6 +38,7 @@ public class Application implements CommandLineRunner {
 					case 4: assignment = assignment4; break;
 					case 5: assignment = assignment5; break;
 					case 6: assignment = assignment6; break;
+                    case 7: assignment = assignment7; break;
 					default: assignment = null;
 				}
 				if (assignment != null) {
